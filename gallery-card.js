@@ -356,7 +356,7 @@ class GalleryCard extends LitElement {
       this.resources = resources.filter(result => !result.error).flat(Infinity);
 
       if (shuffleOrder) {
-	this.resources.sort(function () { return Math.random() - 0.5) });
+	this.resources.sort(function () { return Math.random() - 0.5; });
       } else if (parsedDateSort) {        
         if (reverseSort) {
           this.resources.sort(function (x, y) { return y.date - x.date; });
