@@ -960,6 +960,10 @@ class GalleryCardEditor extends LitElement {
   get _showReload() {
     return this._config.show_reload ?? false;
   }
+	
+  get _shuffleOrder() {
+    return this._config.shuffle_order ?? false;
+  }
 
   formatDate2Digits(str, zeroPad) {
     if (zeroPad) {
@@ -1104,6 +1108,11 @@ class GalleryCardEditor extends LitElement {
             .configValue = "${"show_reload"}"
             @click="${this._valueChanged}"
           ></ha-checkbox>Show Reload Button     
+	<ha-checkbox
+            .checked="${this._shuffleOrder}"
+            .configValue = "${"shuffle_order"}"
+            @click="${this._valueChanged}"
+          ></ha-checkbox>Shuffle order
         <paper-input
           .label="${"Slideshow Time (seconds)"}
           (${this.hass.localize(
