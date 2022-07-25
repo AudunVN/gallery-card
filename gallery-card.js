@@ -310,6 +310,7 @@ class GalleryCard extends LitElement {
     const captionLeadingZeros = this.config.caption_leading_zeros ?? false;
     const parsedDateSort = this.config.parsed_date_sort ?? false;
     const reverseSort = this.config.reverse_sort ?? true;
+    const shuffleOrder = this.config.shuffle_order ?? false;
 
     this.config.entities.forEach(entity => {
       var entityId;
@@ -354,7 +355,9 @@ class GalleryCard extends LitElement {
     Promise.all(commands).then(resources => {
       this.resources = resources.filter(result => !result.error).flat(Infinity);
 
-      if (parsedDateSort) {        
+      if (shuffleOrder) {
+	this.resources.sort(function () { return Math.random() - 0.5) });
+      } else if (parsedDateSort) {        
         if (reverseSort) {
           this.resources.sort(function (x, y) { return y.date - x.date; });
         }
